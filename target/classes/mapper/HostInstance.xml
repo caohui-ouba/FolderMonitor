@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oceanbase.foldermonitor.mapper.HostInstanceMapper">
+
+    <resultMap id="HostInstanceRm" type="com.oceanbase.foldermonitor.entity.HostInstance">
+        <id column="host_ip" property="hostIp" javaType="java.lang.String"/>
+        <result column="host_name" property="hostName" javaType="java.lang.String"/>
+        <result column="disk_cnt" property="diskCnt" javaType="int"/>
+    </resultMap>
+
+    <select id="getByIp" resultMap="HostInstanceRm" resultType="com.oceanbase.foldermonitor.entity.HostInstance">
+        select host_ip, host_name, disk_cnt from host_instance where host_ip = #{ip};
+    </select>
+</mapper>
